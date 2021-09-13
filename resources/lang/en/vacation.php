@@ -1,0 +1,27 @@
+<?php
+return array(
+    '0x052001' => 'This holiday is already occupied and cannot be deleted',
+    '0x052002' => 'Holiday does not exist',
+    '0x052003' => 'Holiday not activated',
+    '0x052004' => 'Holidays are not limited to holiday periods',
+    '0x052005' => 'Holidays do not accumulate to the next cycle',
+    '0x052006' => 'Include the history cycle',
+    '0x052007' => 'day',
+    '0x052008' => 'History',
+    '0x052009' => 'user account',
+    '0x052010' => 'User account cannot be empty',
+    '0x052011' => 'User does not exist',
+    '0x052012' => 'Holiday name already exists.',
+    '0x052013' => 'The address access request failed.',
+    '0x052014' => 'Request address return data format incorrect.',
+    '0x052016' => 'Member scope setting failed',
+    '0x052017' => 'Failed to back up your holiday balance',
+    '0x052018' => 'The holiday shall be paid on the arrival day, but no relevant information of the employee can be found',
+    '0x052019' => 'Wrong time conversion ratio filled in.',
+    '0x052020' => 'Holiday time conversion failed, please try again later.',
+    'lock_used'=> 'Please try again later',
+    'holiday' => 'Vacation leave',
+    'forever' => 'Forever',
+    'valid_within_day_after_issuance' => 'Valid within :days day after issuance',
+    'delete' => 'Delete'
+);

@@ -1,0 +1,121 @@
+{
+  "settings": {
+    "analysis": {
+      "char_filter": {
+        "number_char_filter": {
+          "type": "mapping",
+          "mappings_path": "analysis/number_char_filter.txt"
+        },
+        // 去除标点符号和空格
+        "remove_punctuation": {
+          "type": "pattern_replace",
+          "pattern": "[\\p{P}\\p{Space}]",
+          "replacement": ""
+        },
+        // 使用[]对数字隔离
+        "insulate_number": {
+          "type": "pattern_replace",
+          "pattern": "(\\d+)",
+          "replacement": "[$1]"
+        }
+      },
+      "filter": {
+        "common_stopwords": {
+          "type": "stop",
+          "stopwords": "_english_",
+          "stopwords_path": "analysis/stopwords.txt"
+        },
+        "common_synonym_filter": {
+          "type" : "synonym",
+          "synonyms_path": "analysis/synonym.txt"
+        }
+      },
+      "analyzer": {
+        "ik_index": {
+          "type": "custom",
+          "tokenizer": "ik_max_word",
+          "filter": ["common_synonym_filter", "common_stopwords"]
+        },
+        "ik_smart": {
+          "type": "custom",
+          "tokenizer": "ik_smart",
+          "filter": ["common_synonym_filter", "common_stopwords"]
+        },
+        "default_search": {
+          "type": "custom",
+          "tokenizer": "ik_max_word",
+          "filter": ["common_synonym_filter", "common_stopwords"]
+        },
+        "default": {
+          "type": "custom",
+          "tokenizer": "ik_max_word",
+          "filter": ["common_synonym_filter", "common_stopwords"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "for_client": {
+      "_all": {
+        "enabled": false
+      },
+      "properties": {
+        "address_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "text",
+          "copy_to": [
+            "search_fields._all"
+          ]
+        },
+        "phone": {
+          "type": "keyword",
+          "copy_to": [
+            "search_fields._all"
+          ]
+        },
+        "email": {
+          "type": "keyword",
+          "copy_to": [
+            "search_fields._all"
+          ]
+        },
+        "serial_number": {
+          "type": "keyword"
+        },
+        "createTime": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis",
+          "index": false
+        },
+        "priority": {
+          "index": false,
+          "type": "short"
+        },
+        // 文档分类为个人通讯录
+        "category": {
+          "type": "keyword"
+        },
+        "attachment": {
+          "type": "object",
+          "properties": {
+            "content": {"type": "text", "copy_to": ["search_fields._all"]},
+            "relation_entity_id": {"type": "keyword","index": false},
+            "relation_table": {"type": "keyword","index": false },
+            "attachment_name": {"type": "text"},
+            "attachment_type": {"type": "keyword", "index":false}
+          }
+        },
+        "search_fields": {
+          "type": "object",
+          "properties": {
+            "_all": {
+              "type": "text"
+            }
+          }
+        }
+      }
+    }
+  }
+}

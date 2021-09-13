@@ -1,0 +1,26 @@
+<?php
+ return array (
+  'no_file' => 'Registration file does not exist',
+  'mac_error' => 'Machine code error',
+  'is_expired' => 'License expired',
+  'number_exceed' => 'The number of authorized users exceeds the maximum limit',
+  'trial_is_expired' => 'Trial expired',
+  'trial_number_exceed' => 'The number of trial users exceeds the maximum limit',
+  'no_info' => 'Registration information does not exist',
+  'no_module_file' => 'No authorization module file',
+  'not_empower_user' => 'Not an authorized user',
+  'have_used' => 'File already used',
+  'module_name_error' => 'Authorization file name error',
+  'module_empower_error' => 'Module authorization failed',
+  'mac_empty' => 'The physical address was not obtained, check the presence of the network adapter on the server and confirm that exec command execution permission for PHP is enabled',
+  'empower_file_error' => 'Authorization file error',
+  'mobile_is_expired' => 'Mobile license expired',
+  'mobile_not_empower' => 'Mobile version is not authorized',
+  'mobile_number_exceed' => 'The number of mobile phone authorized users exceeds the maximum limit',
+  'not_mobile_empower_user' => 'Do not allow mobile phone access, please contact the administrator',
+  'system_version' => 'System version',
+  'authorization_name' => 'Authorization name',
+  'pc_user_number' => 'PC user number',
+  'number_of_mobile_users' => 'Number of mobile users',
+  'machine_code' => 'Machine code'
+);

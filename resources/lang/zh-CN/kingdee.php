@@ -1,0 +1,22 @@
+<?php
+return [
+    'lack_params' => '缺少参数',
+    'account_param_error' => '账套参数错误',
+    'basic' => '基础信息',
+    'k3_flow_attach_exist' => '关联关系已存在',
+    'k3_flow_attach_not_exist' => '关联关系不存在',
+    'content_json_data' => '四、JSON格式数据：',
+    'content_field_explan' => '五、字段说明：',
+    'content_require' => ' (必填项)',
+    'account' => '账套',
+    'account_list' => '账套列表',
+    'k3_table' => '金蝶云单据',
+    'default_account' => '默认账套',
+    'lack_of_default_account' => '默认账套未配置',
+    'cloud_api_error' => '请求金蝶CLoudAPI异常',
+    'smart_api' => '智能下级',
+    'delete_account_deny' => '该账套下存在单据，请先删除完单据后再删除本单据',
+    'help_file' => '金蝶云模块操作手册.docx',
+    'parent_control' => '父级控件id',
+    'model_parse_error' => '单据模板格式不正确，解析失败,请检查单据',
+];

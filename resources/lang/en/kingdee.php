@@ -1,0 +1,22 @@
+<?php
+return [
+    'lack_params' => 'Lack of params',
+    'account_param_error' => 'Params of account is error',
+    'basic' => 'Basic information',
+    'k3_flow_attach_exist' => 'Kingdee cloud flow attach is existed',
+    'k3_flow_attach_not_exist' => 'Kingdee cloud flow attach not exist',
+    'content_json_data' => 'Content of json data',
+    'content_field_explan' => 'Content field explan',
+    'content_require' => 'Content require',
+    'account' => 'Account',
+    'account_list' => 'Account list',
+    'k3_table' => 'Kingdee cloud table',
+    'default_account' => 'Default account',
+    'lack_of_default_account' => 'Default account is empty',
+    'cloud_api_error' => 'Kingdee cloud api request error',
+    'smart_api' => 'Smart api',
+    'delete_account_deny' => 'Delete account deny,becase there is table exist',
+    'help_file' => 'Help_file.docx',
+    'parent_control' => 'Parent control',
+    'model_parse_error' => 'Table model parse error,please check table config',
+];

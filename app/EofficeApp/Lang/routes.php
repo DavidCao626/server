@@ -1,0 +1,26 @@
+<?php
+$routeConfig = [
+    ['lang/package', 'addLangPackage', 'post', [175]],
+    ['lang/package', 'getLangPackages', 'get', [175]],
+    ['lang/package/all', 'getAllLangPackages', 'get', [175, 176, 177]],
+    ['lang/package/copy', 'copyLangPackage', 'post', [175]],
+    ['lang/package/sort', 'sortLangPackage', 'post', [175]],
+    ['lang/package/{langId}', 'editLangPackage', 'post', [175]],
+    ['lang/package/{langId}/set-default', 'setDefaultLocale', 'post', [175]],
+    ['lang/package/{langId}/effect', 'effectLangPackage', 'post', [175]],
+    ['lang/package/{langId}', 'getLangPackageDetail', 'get', [175]],
+    ['lang/package/{langId}', 'deleteLangPackage', 'delete', [175]],
+    ['lang/modules/{local}/{type}', 'getLangModules', [177]],
+    ['lang/modules', 'getTransModules', [176]],
+    ['lang/src-desc-langs', 'getConsultAndTransLangs'],
+    ['lang/src-desc-langs/{module}', 'getConsultAndTransLangsByModule', [176]],
+    ['lang/trans-data/save', 'saveTransLangPackage', 'post', [176]],
+    ['lang/trans/online', 'transOnline', 'post', [177]],
+    ['lang/clear/{locale}', 'langClear', 'get', [177]],
+    ['lang/export', 'exportLangPackage', 'get'],
+    ['lang/trans-api','getTransApi','get', [177]],
+    ['lang/trans-api','setTransApi','post', [177]],
+    ['lang/trans-api/check','checkTransApi','get', [177]],
+    ['lang/bind-user','bindUserLocale','post'],
+    ['lang/file/{module}/{locale}', 'getLangFile']
+];

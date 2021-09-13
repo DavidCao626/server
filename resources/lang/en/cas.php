@@ -1,0 +1,22 @@
+<?php
+return [
+    '0x350001'         => 'The system does not open CAS authentication, please open in the system management performance security Settings',
+    '0x350002'         => 'Please set the synchronization parameter first',
+    '0x350003'         => 'User account',
+    '0x350004'         => 'User name',
+    '0x350005'         => 'Sex',
+    '0x350006'         => 'Job number',
+    '0x350007'         => 'Department ID',
+    '0x350008'         => 'Cell-phone number',
+    '0x350009'         => 'E-mail',
+    '0x350010'         => 'CAS organization architecture synchronized successfully!',
+    '0x350011'         => 'Department name',
+    '0x350012'         => 'Parent department ID',
+    '0x350013'         => 'Department number',
+    '0x350014'         => 'Department phone',
+    '0x350015'         => 'Department fax',
+    '0x350016'         => 'The external database ID does not exist',
+    '0x350017'         => 'Field matching failed, please check the synchronization parameters',
+    'cas_url'          => 'CAS authentication server address',
+    'sync_basis_field' => 'A field for synchronization gist',
+];

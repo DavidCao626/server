@@ -1,0 +1,175 @@
+{
+  "settings": {
+    "analysis": {
+      "tokenizer": {
+        "pinyin": {
+          "type": "pinyin",
+          "keep_first_letter": true,
+          // true: 拼音头字母，刘德华 => ldh
+          "keep_separate_first_letter": false,
+          // true: 刘德华 => l, d, h
+          "keep_full_pinyin": true,
+          // true: 全拼音，刘德华 => liu, de, hua
+          "keep_joined_full_pinyin": true,
+          // true: 合并全拼音，刘德华 => liudehua
+          "keep_original": false,
+          // true: 保留原词条
+          "limit_first_letter_length": 16,
+          "lowercase": true,
+          // true: 非中文字符全部小写
+          "trim_whitespace": true,
+          // true: 删除空行
+          "keep_none_chinese": true,
+          // true: 保留非中文词条，刘德华at => ldh, at
+          "keep_none_chinese_together": true,
+          // true: 使非中文字符在一块，DJ音乐家 -> DJ, yin, yue, jia；false: DJ音乐家 -> D, J, yin, yue, jia
+          "keep_none_chinese_in_first_letter": false,
+          // true: 将非中文字符与拼音头字母在一块，刘德华at2016 => ldhat2016
+          "keep_none_chinese_in_joined_full_pinyin": false,
+          // true: 将非中文字符与合并的全拼音在一块，刘德华at2016 => liudehuaat2016
+          "none_chinese_pinyin_tokenize": false,
+          // true: 将非中文字母分为单独的拼音术语，liudehuaalibaba13zhuanghan -> liu, de, hua, a, li, ba, ba, 13, zhuang, han
+          "remove_duplicated_term": true
+          // true: 删除重复的词条，的de => de
+        }
+      },
+      "filter": {
+        "pinyin": {
+          "type": "pinyin",
+          "keep_first_letter": true,
+          // true: 拼音头字母，刘德华 => ldh
+          "keep_separate_first_letter": false,
+          // true: 刘德华 => l, d, h
+          "keep_full_pinyin": true,
+          // true: 全拼音，刘德华 => liu, de, hua
+          "keep_joined_full_pinyin": true,
+          // true: 合并全拼音，刘德华 => liudehua
+          "keep_original": false,
+          // true: 保留原词条
+          "limit_first_letter_length": 16,
+          "lowercase": true,
+          // true: 非中文字符全部小写
+          "trim_whitespace": true,
+          // true: 删除空行
+          "keep_none_chinese": true,
+          // true: 保留非中文词条，刘德华at => ldh, at
+          "keep_none_chinese_together": true,
+          // true: 使非中文字符在一块，DJ音乐家 -> DJ, yin, yue, jia；false: DJ音乐家 -> D, J, yin, yue, jia
+          "keep_none_chinese_in_first_letter": false,
+          // true: 将非中文字符与拼音头字母在一块，刘德华at2016 => ldhat2016
+          "keep_none_chinese_in_joined_full_pinyin": false,
+          // true: 将非中文字符与合并的全拼音在一块，刘德华at2016 => liudehuaat2016
+          "none_chinese_pinyin_tokenize": false,
+          // true: 将非中文字母分为单独的拼音术语，liudehuaalibaba13zhuanghan -> liu, de, hua, a, li, ba, ba, 13, zhuang, han
+          "remove_duplicated_term": true
+          // true: 删除重复的词条，的de => de
+        }
+      },
+      "analyzer": {
+        "pinyin_completion": {
+          "type": "custom",
+          "tokenizer": "pinyin"
+        },
+        "pinyin_suggester": {
+          "type": "custom",
+          "tokenizer": "pinyin"
+        },
+        "ik_completion": {
+          "type": "custom",
+          "tokenizer": "ik_smart"
+        },
+        "ik_suggester": {
+          "type": "custom",
+          "tokenizer": "ik_smart"
+        },
+        "keyword_lowercase": {
+          "type": "custom",
+          "tokenizer": "keyword",
+          "filter": [
+            "lowercase"
+          ]
+        }
+      }
+    },
+    "index.unassigned.node_left.delayed_timeout": "1m",
+    /**
+    * 指定分片恢复权重，决定恢复过程中索引的顺序：
+    *   1、首先，判断索引的权重、权重高的先恢复。
+    *   2、其次，跟据索引创建时间、创建的晚的先恢复。
+    *   3、再者、根据索引名排序
+    **/
+    "index.priority": 5,
+    /**
+    * 一个节点最多分配多少个分片，-1 为无上限。
+    **/
+    "index.routing.allocation.total_shards_per_node": -1,
+    /**
+    * 当 Segments 发生 Merge 操作时，最大的线程数。
+    * SSD： Math.max(1, Math.min(4, Runtime.getRuntime().availableProcessors() / 2))
+    * 机械引盘设置为 1。
+    **/
+    "index.merge.scheduler.max_thread_count": 1,
+    /**
+    * from + size 的最大值。
+    **/
+    "index.max_result_window": 100000
+  },
+  "mappings": {
+    "for_client": {
+      "properties": {
+        "id": {
+          "type": "keyword",
+          "index": false
+        },
+        "keyword": {
+          "type": "keyword",
+          "fields": {
+            "pinyin": {
+              "type": "text",
+              "analyzer": "pinyin_suggester"
+            },
+            "ik": {
+              "type": "text",
+              "analyzer": "ik_suggester"
+            },
+            "correction": {
+              "type": "text",
+              "analyzer": "keyword_lowercase"
+            }
+          }
+        },
+        "tags": {
+          "type": "keyword"
+        },
+        "category": {
+          "type": "keyword"
+        },
+        "weight": {
+          "type": "byte"
+        },
+        "searchCount": {
+          "type": "integer"
+        },
+        "relation": {
+          "type": "object",
+          "properties": {
+            "expertCount": {
+              "type": "integer"
+            },
+            "keywords": {
+              "type": "keyword"
+            }
+          }
+        },
+        "keyword_suggestion": {
+          "type": "completion",
+          "analyzer": "keyword",
+          "search_analyzer": "keyword",
+          "max_input_length": 50,
+          "preserve_separators": false,
+          "preserve_position_increments": true
+        }
+      }
+    }
+  }
+}
